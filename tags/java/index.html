@@ -39,7 +39,7 @@
       
         <li class="list-item">
           
-            <a href="/" class="item-link active">Home</a>
+            <a href="/" class="item-link">Home</a>
           
         </li>
       
@@ -78,7 +78,7 @@
         
           <li class="menu-item">
             
-              <a href="/" class="menu-link mobile-active">Home</a>
+              <a href="/" class="menu-link">Home</a>
             
           </li>
         
@@ -111,48 +111,43 @@
   </div>
 </header>
 
-    <main class="app-body">
+    <div id="article-banner">
+  <h2>Archives</h2>
+  <p class="post-date">文章归档</p>
+</div>
+<main class="app-body" id="archives">
   
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2018/01/20/hello-world/">Hello World</a>
-      </h2>
-      <p class="article-date">January 20, 2018</p>
-      
-      <div class="article-summary">
-        
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer ...
-        
+  
+  
+    <section class="time-section">
+  <h1 class="section-year">
+    2018
+  </h1>
+  <div class="section-list">
+    
+    
+      <div class="section-list-item">
+        <a href="/2018/01/20/hello-world/" class="archive-title">Hello World</a>
+        <p class="archive-date">01-20</p>
       </div>
-      <a class="more" href="/2018/01/20/hello-world/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2018/01/16/带package与不带package的编译问题/">带package与不带package的编译问题</a>
-      </h2>
-      <p class="article-date">January 16, 2018</p>
-      
-        
-  <a href="/tags#java" >
-    <span class="tag-code">java</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          java中带package与不带package进行编译是有一些区别的，主要体现在编译后 解释 步骤的操作不同
-不带package文件路径/java/Test.java1234567public static Test&#123;  public static void main(String ...
-        
+    
+      <div class="section-list-item">
+        <a href="/2018/01/16/带package与不带package的编译问题/" class="archive-title">带package与不带package的编译问题</a>
+        <p class="archive-date">01-16</p>
       </div>
-      <a class="more" href="/2018/01/16/带package与不带package的编译问题/">Read more</a>
-    </article>
-  
-
+    
+  </div>
+</section>
   
 </main>
 
-
+<script>
+  (function () {
+    var url = 'http://hao12yue12.github.io/tags/java/index.html';
+    $('#article-banner').geopattern(url);
+    $('.header').removeClass('fixed-header');
+  })();
+</script>
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>
