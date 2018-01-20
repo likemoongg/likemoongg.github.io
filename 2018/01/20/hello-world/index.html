@@ -141,9 +141,10 @@
     
     <!-- 二维码 END -->
     
-      <!-- Gitment START -->
-      <div id="comments"></div>
-      <!-- Gitment END -->
+      <!-- UY START -->
+      <div id="uyan_frame"></div>
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2155828"></script>
+      <!-- UY END -->
     
   </article>
   <!-- Article END -->
@@ -188,7 +189,7 @@
       if (src !== 'http://file.muyutech.com/error-img.png') {
         var imageW = $(this).width()
         var imageH = $(this).height()
-        
+
         var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
         zoom = zoom < 1 ? 1 : zoom
         zoom = zoom > 2 ? 2 : zoom
@@ -216,15 +217,15 @@
     });
 
     // gitment
-    var gitmentConfig = "hao12yue12";
+    var gitmentConfig = "";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
         id: "Hello World",
-        owner: "hao12yue12",
-        repo: "hao12yue12.github.io",
+        owner: "",
+        repo: "",
         oauth: {
-          client_id: "719784a8289c09721c22",
-          client_secret: "6fae1c39e5add34da55259a2b5ff9c49640dfcb5"
+          client_id: "",
+          client_secret: ""
         },
         theme: {
           render(state, instance) {
