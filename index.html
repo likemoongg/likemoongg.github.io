@@ -115,9 +115,9 @@
   
     <article class="article-card">
       <h2 class="article-head">
-        <a href="/2018/01/22/golang中的输入函数/">golang中的输入读取函数</a>
+        <a href="/2018/03/22/golang中的输入函数/">golang中的输入读取函数</a>
       </h2>
-      <p class="article-date">January 22, 2018&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/2018/01/22/golang中的输入函数/#disqus_thread"></a></p>
+      <p class="article-date">March 22, 2018&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/2018/03/22/golang中的输入函数/#disqus_thread"></a></p>
 
       
         
@@ -132,7 +132,29 @@
 Scan Scanf ScanlnScan(a . ...
         
       </div>
-      <a class="more" href="/2018/01/22/golang中的输入函数/">Read more</a>
+      <a class="more" href="/2018/03/22/golang中的输入函数/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/03/21/java中的输入输出/">java中的输入输出</a>
+      </h2>
+      <p class="article-date">March 21, 2018&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/2018/03/21/java中的输入输出/#disqus_thread"></a></p>
+
+      
+        
+  <a href="/tags#java" >
+    <span class="tag-code">java</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          java中主要利用Scanner类读取输入数据.其中主要的方法为next()和nextLine()等方法进行读取,而用hasNext()等方法判断是否有字符串
+输入读取方法12345678910111213141516171819202122import java.util.Scanner; ...
+        
+      </div>
+      <a class="more" href="/2018/03/21/java中的输入输出/">Read more</a>
     </article>
   
     <article class="article-card">
@@ -172,6 +194,112 @@ Scan Scanf ScanlnScan(a . ...
       <a class="more" href="/2018/01/20/hello-world/">Read more</a>
     </article>
   
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/04/28/帧(frame)与包(packet又可以称为 分组)的区别/">帧(frame)与包(packet又可以称为 分组)的区别</a>
+      </h2>
+      <p class="article-date">April 28, 2017&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/2017/04/28/帧(frame)与包(packet又可以称为 分组)的区别/#disqus_thread"></a></p>
+
+      
+      <div class="article-summary">
+        
+          一个packet是在OSI模型网络层(network layer)中的封装单元,最常见的packet单元是ip packet,包含了诸如源(source)和目的(destination)的ip地址.因此通常一个packet包含了逻辑地址信息一个帧另一方面来讲是在数据链接层(data link ...
+        
+      </div>
+      <a class="more" href="/2017/04/28/帧(frame)与包(packet又可以称为 分组)的区别/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/03/31/代码测试的重要性/">代码测试的重要性</a>
+      </h2>
+      <p class="article-date">March 31, 2017&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/2017/03/31/代码测试的重要性/#disqus_thread"></a></p>
+
+      
+      <div class="article-summary">
+        
+          ThoughtWorks 的大牛Michael C. Feathers在他的成名作 Working Effectively with Legacy Code 的序言写道：
+
+对于我来说，遗留代码 (Legacy Code)简单来讲就是没有测试覆盖的代码。不管它写得多好，也不管它面向对象封装得 ...
+        
+      </div>
+      <a class="more" href="/2017/03/31/代码测试的重要性/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/03/27/与多协程的沟通-map搭配channel在协程中的使用/">与多协程的沟通:map搭配channel在协程中的使用</a>
+      </h2>
+      <p class="article-date">March 27, 2017&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/2017/03/27/与多协程的沟通-map搭配channel在协程中的使用/#disqus_thread"></a></p>
+
+      
+      <div class="article-summary">
+        
+          go语言中最大的特色便是原生的支持并发,使用的方法是简单的语句go func{},而其中协程间的通信使用的是channel(管道)实现的.如何在启动n个协程并与其进行独立通信呢?直观的来说有多少个协程就初始化多少个channel就可以保证每个协程都有单独的通信管道.但是我们启动的协程数量是不 ...
+        
+      </div>
+      <a class="more" href="/2017/03/27/与多协程的沟通-map搭配channel在协程中的使用/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/03/20/go语言函数相关/">go语言函数相关</a>
+      </h2>
+      <p class="article-date">March 20, 2017&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/2017/03/20/go语言函数相关/#disqus_thread"></a></p>
+
+      
+      <div class="article-summary">
+        
+          今天看代码看到一段有趣的东西1234567switch f.(type) &#123; //f为interface&#123;&#125;	case func([]interface&#123;&#125;): //判断为 传入的[]interface&#123;&#125;,返回值为 空的 ...
+        
+      </div>
+      <a class="more" href="/2017/03/20/go语言函数相关/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/03/03/supervisord/">supervisord</a>
+      </h2>
+      <p class="article-date">March 3, 2017&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/2017/03/03/supervisord/#disqus_thread"></a></p>
+
+      
+      <div class="article-summary">
+        
+          1$ supervisord -n 查看运行supervisorctl过程中的报错
+
+permission denied: /var/log/supervisor/supervisord.log1234sudo /etc/init.d/supervisor startorsudo syste ...
+        
+      </div>
+      <a class="more" href="/2017/03/03/supervisord/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/03/03/锚点/">锚点</a>
+      </h2>
+      <p class="article-date">March 3, 2017&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/2017/03/03/锚点/#disqus_thread"></a></p>
+
+      
+      <div class="article-summary">
+        
+          锚点(anchor),又称为命名锚点,是网页制作中超级连接的一种,用于快速定位到网页内部的制定位置,应用非常广泛可以在一篇很长的文章中插入锚点方便跳转到不同的子标题,或者回到头部或底部等. 
+注意:网页内部跳转到锚点的过程不重新加载页面,只是滑动页面到相应的位置
+
+使用锚点通常分为2步:首先 ...
+        
+      </div>
+      <a class="more" href="/2017/03/03/锚点/">Read more</a>
+    </article>
+  
+  
+    <div class="guide-pager">
+  
+    <a class="unvisible" href="/"><span class="page-arrow">←</span> Prev</a>
+  
+  
+    <a href="/page/2/">Next<span class="page-arrow"> →</span></a>
+  
+</div>
   
 </main>
 <script id="dsq-count-scr" src="//likemoon-me-1.disqus.com/count.js" async></script>

@@ -10,7 +10,7 @@
   
   <title>
     
-      Tags | LikeMoon&#39;s blog
+      LikeMoon&#39;s blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -39,7 +39,7 @@
       
         <li class="list-item">
           
-            <a href="/" class="item-link">Home</a>
+            <a href="/" class="item-link active">Home</a>
           
         </li>
       
@@ -78,7 +78,7 @@
         
           <li class="menu-item">
             
-              <a href="/" class="menu-link">Home</a>
+              <a href="/" class="menu-link mobile-active">Home</a>
             
           </li>
         
@@ -111,64 +111,38 @@
   </div>
 </header>
 
-    <div id="article-banner">
-  <h2>Tags</h2>
-  <p class="post-date">标签检索</p>
-</div>
-<main class="app-body">
-  <div id="tag-cloud">
-    
-      <a class="tag2" data-name="tag-go">go</a>
-    
-      <a class="tag0" data-name="tag-java">java</a>
-    
-  </div>
+    <main class="app-body">
   
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-go">go</h3>
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/01/09/session共享机制/">session共享机制</a>
+      </h2>
+      <p class="article-date">January 9, 2017&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/2017/01/09/session共享机制/#disqus_thread"></a></p>
+
       
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/03/22/golang中的输入函数/">golang中的输入读取函数</a>
-          </li>
-        </ul>
+      <div class="article-summary">
         
-    </div>
-    
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-java">java</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/03/21/java中的输入输出/">java中的输入输出</a>
-          </li>
-        </ul>
+          
+学习了nginx之后可知nginx可以作为反向代理服务器，用于负载均衡。在实际项目中用户对同一网址的访问可能在后端多个web服务器中选择一个进行处理，或这在url分发（针对特定的url指定特定的服务器处理）的情况下，如果需要用户认证等操作则会涉及到session共享的问题，现在总结如下：
+ ...
         
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/01/20/带package与不带package的编译问题/">Java中带package与不带package的编译问题</a>
-          </li>
-        </ul>
-        
-    </div>
-    
+      </div>
+      <a class="more" href="/2017/01/09/session共享机制/">Read more</a>
+    </article>
+  
+  
+    <div class="guide-pager">
+  
+    <a href="/page/2/"><span class="page-arrow">← </span>Prev</a>
+  
+  
+    <a class="unvisible" href="/">Next <span class="page-arrow">→</span></a>
+  
+</div>
+  
 </main>
+<script id="dsq-count-scr" src="//likemoon-me-1.disqus.com/count.js" async></script>
 
-<script>
-  (function () {
-    var url = 'http://likemoon.me/tags/index.html'
-    $('#article-banner').geopattern(url)
-    $('.header').removeClass('fixed-header')
-
-    var tag = location.hash.replace('#', '')
-    if (tag) {
-      var tagId = "#tag-" + tag;
-      $("html, body").animate({
-        scrollTop: $(tagId).offset().top 
-      }, 400)
-    }
-  })();
-</script>
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>

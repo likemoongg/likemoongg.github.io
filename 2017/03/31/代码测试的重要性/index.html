@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="This is a blog about web technology">
+  <meta name="keyword" content="java, golang">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      代码测试的重要性 | LikeMoon&#39;s blog
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>LikeMoon's blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>代码测试的重要性</h2>
+  <p class="post-date">2017-03-31</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>ThoughtWorks 的大牛Michael C. Feathers在他的成名作 Working Effectively with Legacy Code 的序言写道：</p>
+<blockquote>
+<p>对于我来说，遗留代码 (Legacy Code)简单来讲就是没有测试覆盖的代码。不管它写得多好，也不管它面向对象封装得有多精美，没有测试覆盖的代码都是烂代码。有了测试覆盖，我们可以在可被验证的情况下快速的改变我们代码的行为，而如果没有测试覆盖，我们无从得知我们的代码是在变好还是在变坏。</p>
+</blockquote>
+<p>好处列举如下</p>
+<ul>
+<li>帮助重构项目.可以帮助我们验证在不改变函数行为的前提下改动函数内部的结构.让我们的改动更加大胆,迅捷.</li>
+<li>简化集成.在<a href="http://www.seguetech.com/the-benefits-of-unit-testing/" target="_blank" rel="noopener">The Benefits of Unit Testing</a>中有一个观点,在着手写代码之前先写好测试单元.意味着我们开始一个项目之后必须按照需求划分好结构,提前分解成一个一个的最小单元.方便测试,也方便我们得知何时我们的代码算是完成了功能(通过测试便算~)</li>
+<li>提供文档.在写好单元测试之后,每个函数的输入输出和基础功能也变得显而易见了,可以帮助我们写文档API.而阅读者可以结合测试代码更好的理解文档.</li>
+<li>更早的发现bug.随着项目不断扩大,自动话的测试单元总可以在基础代码bug出现的第一时间发现错误,以免项目越来越大但发现bug的概率也随之加大.</li>
+</ul>
+<p>但为什么还是有人不写测试呢</p>
+<ul>
+<li>不会:)</li>
+<li>懒:(<h2 id="go-test-介绍"><a href="#go-test-介绍" class="headerlink" title="go test 介绍"></a>go test 介绍</h2>go本身自带轻量级的测试框架<code>testing</code>,使用<code>go test</code>命令进行单元测试和性能测试,当然也有很多<a href="https://nathany.com/go-testing-toolbox/" target="_blank" rel="noopener">其他的工具</a><br>go test命令是一个按照一定的约定和组织的测试代码的驱动程序。在包目录内，所有以_test.go为后缀名的源文件并不是go build构建包的一部分，它们是go test测试的一部分。</li>
+</ul>
+<p>在*_test.go文件中，有三种类型的函数：测试函数、基准测试函数、示例函数。一个测试函数是以Test为函数名前缀的函数，用于测试程序的一些逻辑行为是否正确；go test命令会调用这些测试函数并报告测试结果是PASS或FAIL。基准测试函数是以Benchmark为函数名前缀的函数，它们用于衡量一些函数的性能；go test命令会多次运行基准函数以计算一个平均的执行时间。示例函数是以Example为函数名前缀的函数，提供一个由编译器保证正确性的示例文档</p>
+<p>go test命令会遍历所有的*_test.go文件中符合上述命名规则的函数，然后生成一个临时的main包用于调用相应的测试函数，然后构建并运行、报告测试结果，最后清理测试中生成的临时文件。</p>
+<h2 id="go语言的测试模块的编写"><a href="#go语言的测试模块的编写" class="headerlink" title="go语言的测试模块的编写"></a>go语言的测试模块的编写</h2><p>这里我主要写一下简单的测试模块的编写</p>
+<ol>
+<li><p>新建一个文件目录<code>gotest</code>并将我们要写的代码<code>Add.go</code>和测试代码<code>Add_test.go</code>都放在这个目录下</p>
+</li>
+<li><p>Add.go中实现如下函数:</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">package example</span><br><span class="line"></span><br><span class="line">func Add(a,b float64)float64&#123;</span><br><span class="line">    return a+b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>Add_test.go 是我们的测试文件,书写时必须注意以下原则:</p>
+<ul>
+<li>文件名必须是 _test.go 结尾的，这样在执行 go test 的时候才会执行到相应的代码</li>
+<li>你必须 import testing 这个包</li>
+<li>所有的测试用例函数必须是 Test 开头</li>
+<li>测试用例会按照源代码中写的顺序依次执行</li>
+<li>测试函数 TestXxx() 的参数是 testing.T，我们可以使用该类型来记录错误或者是测试状态</li>
+<li>测试格式：func TestXxx (t *testing.T) , Xxx 部分可以为任意的字母数字的组合，但是首字母不能是小写字母[a-z]，例如 Testintdiv 是错误的函数名。</li>
+<li>函数中通过调用 testing.T 的 Error, Errorf, FailNow, Fatal, FatalIf 方法，说明测试不通过，调用 Log 方法用来记录测试的信息。</li>
+</ul>
+<p>下面就按照以上原则写一个测试用例的代码</p>
+<h3 id="表格驱动的测试"><a href="#表格驱动的测试" class="headerlink" title="表格驱动的测试"></a>表格驱动的测试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package example </span><br><span class="line"></span><br><span class="line">import(</span><br><span class="line">    &quot;testing&quot;</span><br><span class="line">   )</span><br><span class="line">func Test_Add(t *testing.T)&#123;</span><br><span class="line">       var tests=[]struct&#123;</span><br><span class="line">           input1  float64</span><br><span class="line">           input2  float64</span><br><span class="line">           want    float64</span><br><span class="line">       &#125;&#123;</span><br><span class="line">           &#123;1,2,3&#125;,</span><br><span class="line">           &#123;2,3,5&#125;,</span><br><span class="line">           &#123;3,4,7&#125;,</span><br><span class="line">           &#123;1,4,5&#125;,</span><br><span class="line">           &#123;2,4,6&#125;,</span><br><span class="line">           &#123;1,9,10&#125;,</span><br><span class="line">       &#125;</span><br><span class="line">       for _,v:=range tests&#123;</span><br><span class="line">           if result:=Add(v.input1,v.input2);result!=v.want&#123;</span><br><span class="line">               t.Errorf(&quot;Add(%v,%v)=%v,want %v&quot;,v.input1,v.input2,result,v.want)</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>备注说明:</p>
+<ul>
+<li>这种表格驱动的测试在Go中很常见的. 我们很容易向表格添加新的测试数据, 并且后面的测试逻辑也没有冗余, 这样我们可以更好地完善错误信息.</li>
+<li>测试失败的信息一般的形式是 “f(x) = y, want z”, f(x) 解释了失败的操作和对应的输出, y 是实际的运行结果, z 是期望的正确的结果. </li>
+<li>t.Errorf 调用也没有引起 panic 或停止测试的执行. 即使表格中前面的数据导致了测试的失败, 表格后面的测试数据依然会运行测试, 因此在一个测试中我们可能了解多个失败的信息.</li>
+<li>*testing.T 这个类型的主要目的是用来报告测试的错误，打印日志，在测试运行过程中日志会一直累积，并在测试代码运行结束后打印到控制台。</li>
+<li>Go 还提供了 <em>testing.B 和 </em>testing.M 分别用于基准测试 (Benchmark Testing) 和做一些测试的设置和清理工作，具体可以参见 <a href="https://golang.org/pkg/testing/" target="_blank" rel="noopener">Go testing</a> 文档。</li>
+</ul>
+<h3 id="其他测试"><a href="#其他测试" class="headerlink" title="其他测试"></a>其他测试</h3><p>表格驱动的测试便于构造基于精心挑选的测试数据的测试用例. 另一种测试思路是随机测试, 也就是通过构造更广泛的随机输入来测试探索函数的行为<br>那么对于一个随机的输入, 我们如何能知道希望的输出结果呢? 这里有两种策略. 第一个是编写另一个函数, 使用简单和清晰的算法, 虽然效率较低但是行为和要测试的函数一致, 然后针对相同的随机输入检查两者的输出结果. 第二种是生成的随机输入的数据遵循特定的模式, 这样我们就可以知道期望的输出的模式.</p>
+<p>除此之外 go test工具还可以测试命令,或者进行白盒测试这些测试都可以在<a href="http://docs.ruanjiadeng.com/gopl-zh/ch11/ch11-02.html" target="_blank" rel="noopener">Go语言圣经</a>中可以看到更详细的使用方法</p>
+<h2 id="其他非常有价值的工具"><a href="#其他非常有价值的工具" class="headerlink" title="其他非常有价值的工具"></a>其他非常有价值的工具</h2><ol>
+<li>自动生成的测试代码的工具 <a href="https://github.com/cweill/gotests" target="_blank" rel="noopener">gotests</a>,使用说明请看链接</li>
+<li>Go 还提供了检测并发代码竞争条件的工具，默认没有启用，可以通过 <code>go test -race</code> 来指定；</li>
+<li>另外，<code>go vet</code> 相当于代码的静态分析工具，如果集成到项目的 CI 中会对代码质量的保证大有帮助；</li>
+</ol>
+<h2 id="推荐资料"><a href="#推荐资料" class="headerlink" title="推荐资料"></a>推荐资料</h2><p><a href="http://docs.ruanjiadeng.com/gopl-zh/ch11/ch11-02.html" target="_blank" rel="noopener">Go语言圣经</a><br><a href="http://haobook.readthedocs.io/zh_CN/latest/periodical/201608/tanyanping.html#go-test" target="_blank" rel="noopener">编写可测试的Go代码</a><br><a href="http://codethoughts.info/go/2015/04/05/how-to-test-go-code/" target="_blank" rel="noopener">如何测试 Go 代码 - 单元测试</a><br><a href="https://golang.org/pkg/testing/" target="_blank" rel="noopener">官方文档</a></p>
+</li>
+</ol>
+</section>
+    <!-- Tags START -->
+    
+    <!-- Tags END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+
+      <div id="disqus_thread"></div>
+
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      <!-- Disqus Comment -->
+      <!-- <a href="http://likemoon.me/bar.html#disqus_thread">Link</a> -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#go-test-介绍"><span class="toc-nav-text">go test 介绍</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#go语言的测试模块的编写"><span class="toc-nav-text">go语言的测试模块的编写</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#表格驱动的测试"><span class="toc-nav-text">表格驱动的测试</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#其他测试"><span class="toc-nav-text">其他测试</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#其他非常有价值的工具"><span class="toc-nav-text">其他非常有价值的工具</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#推荐资料"><span class="toc-nav-text">推荐资料</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /**/
+    var disqus_config = function () {
+    this.page.url = window.location.href;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://likemoon-me-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+
+  (function () {
+    var url = 'http://likemoon.me/2017/03/31/代码测试的重要性/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "代码测试的重要性",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
