@@ -10,7 +10,7 @@
   
   <title>
     
-      golang中的输入读取函数 | LikeMoon&#39;s blog
+      Hello World | LikeMoon&#39;s blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -112,8 +112,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>golang中的输入读取函数</h2>
-  <p class="post-date">2018-01-22</p>
+  <h2>Hello World</h2>
+  <p class="post-date">2018-04-09</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -121,21 +121,18 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>golang中读取输入的函数主要分为 <strong>fmt</strong> 包中的 <strong>Scan</strong> <strong>Scanf</strong> <strong>Scanln</strong> 函数以及 <strong>bufio</strong> 包中的 <strong>Reader</strong> 对象的方法.其中fmt包中的方法更简单普遍,而bufio.Reader对象中的方法更适合用户进行自定义处理</p>
-<h2 id="Scan-Scanf-Scanln"><a href="#Scan-Scanf-Scanln" class="headerlink" title="Scan Scanf Scanln"></a>Scan Scanf Scanln</h2><p><code>Scan(a ...interface{})(n int,err error)</code><br> 以空格和换行符(newline)为间隔读取键盘输入的值,并传给的输入变量,注意输入变量应以地址的方式传参.注意:回车并不意味着读取输入结束,只有键盘输入值的数量满足传参个数时才停止读取,否则继续读取.如有多余的输入值则可提供给下一个读取函数<br><code>Scanln(a ...interface{})(n int,err error)</code><br>  同Scan函数基本相同,但输入遇到换行符和文件结束符(EOF)就停止读取输入,所以键盘输入值的数量与函数中传参的数量不同就会报错.键盘输入参数数量 &gt; 函数传参数量 报错:expected newline.键盘输入参数数量 &lt; 函数传参数量 报错:unexpected newline.<br><code>Scanf(format string,a ...interface{})(n int,err error)</code><br>  也是以换行符结束读取输入.函数第一个参数为输入格式,必须按照规定的格式输入参数否则报错</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a, b, c <span class="keyword">string</span></span><br><span class="line">	<span class="keyword">var</span> d <span class="keyword">float32</span></span><br><span class="line">	<span class="keyword">var</span> e <span class="keyword">int</span></span><br><span class="line"></span><br><span class="line">	_, err := fmt.Scan(&amp;a, &amp;b, &amp;c)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">"a=%s,b=%s,c=%s \n"</span>, a, b, c)</span><br><span class="line"></span><br><span class="line">	_, err = fmt.Scanln(&amp;a, &amp;b, &amp;c)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">"a=%s,b=%s,c=%s \n"</span>, a, b, c)</span><br><span class="line"></span><br><span class="line">	_, err = fmt.Scanf(<span class="string">"a:%s d:%f e:%d"</span>, &amp;a, &amp;d, &amp;e)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">"a=%s,d=%f,e=%d \n"</span>, a, d, e)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>##bufio.Reader</p>
+    <section class="markdown-content"><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h3 id="Update-to-github"><a href="#Update-to-github" class="headerlink" title="Update to github"></a>Update to github</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d -g</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 </section>
     <!-- Tags START -->
-    
-      <div class="tags">
-        <span>Tags:</span>
-        
-  <a href="/tags#go" >
-    <span class="tag-code">go</span>
-  </a>
-
-      </div>
     
     <!-- Tags END -->
     <!-- 打赏 START -->
@@ -160,7 +157,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Scan-Scanf-Scanln"><span class="toc-nav-text">Scan Scanf Scanln</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Quick-Start"><span class="toc-nav-text">Quick Start</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Create-a-new-post"><span class="toc-nav-text">Create a new post</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Run-server"><span class="toc-nav-text">Run server</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Generate-static-files"><span class="toc-nav-text">Generate static files</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Deploy-to-remote-sites"><span class="toc-nav-text">Deploy to remote sites</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Update-to-github"><span class="toc-nav-text">Update to github</span></a></li></ol></li></ol>
     
   </div>
 </aside>
@@ -187,7 +184,7 @@
     })();
 
   (function () {
-    var url = 'http://likemoon.me/2018/01/22/golang中的输入函数/';
+    var url = 'http://likemoon.me/2018/04/09/hello-world/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -243,7 +240,7 @@
     var gitmentConfig = "";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "golang中的输入读取函数",
+        id: "Hello World",
         owner: "",
         repo: "",
         oauth: {
