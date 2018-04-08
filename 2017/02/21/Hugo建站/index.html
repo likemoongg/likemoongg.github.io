@@ -10,7 +10,7 @@
   
   <title>
     
-      与多协程的沟通:map搭配channel在协程中的使用 | LikeMoon&#39;s blog
+      Hugo建站 | LikeMoon&#39;s blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -112,8 +112,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>与多协程的沟通:map搭配channel在协程中的使用</h2>
-  <p class="post-date">2017-03-27</p>
+  <h2>Hugo建站</h2>
+  <p class="post-date">2017-02-21</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -121,25 +121,67 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>go语言中最大的特色便是原生的支持并发,使用的方法是简单的语句go func{},而其中协程间的通信使用的是channel(管道)实现的.如何在启动n个协程并与其进行独立通信呢?<br>直观的来说有多少个协程就初始化多少个channel就可以保证每个协程都有单独的通信管道.但是我们启动的协程数量是不固定的,就不可能通过预先初始化固定数量的channel实现.所以每当启动goroutine时便声明一个变量加入全局的slice和map</p>
-<h2 id="思路1-slice"><a href="#思路1-slice" class="headerlink" title="思路1:slice"></a>思路1:slice</h2><p>这是比较容易想到的一种解决方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var sli=make([]chan bool,0)</span><br><span class="line"></span><br><span class="line">func sample(a int)&#123;</span><br><span class="line">    &lt;-sli[a]</span><br><span class="line">    fmt.Println(&quot;in goroutine,variable is %d&quot;,a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main()&#123;</span><br><span class="line">    _sli1:=make(chan bool) //初始化channel</span><br><span class="line">    sli=append(sli,_sli1)</span><br><span class="line">    go sample(len(sli)-1)</span><br><span class="line">    sli[len(sli)-1]&lt;-true</span><br><span class="line"></span><br><span class="line">    _sli2:=make(chan bool)</span><br><span class="line">    sli=append(sli,_sli2)</span><br><span class="line">    go sample(len(sli)-1)</span><br><span class="line">    sli[len(sli)-1]&lt;-true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+    <section class="markdown-content"><ol>
+<li>Hugo是go语言编写的静态网页生成框架</li>
+</ol>
 <ul>
-<li>缺点:如果需要使用特定的channel需要查询slice的index,在接下来调用的过程会很麻烦</li>
+<li>静态网页在个人博客中加载部署方面很有优势,简洁而且可以满足基本的写作需求</li>
+<li>内容支持markdown,对于技术博客来讲是莫大的帮助.</li>
+<li>可以加载各种主题,再次基础上进行自己的改造,选择困难症杀手</li>
+<li>页面生成速度极快,大约1个页面1ms</li>
 </ul>
-<h2 id="思路2-map"><a href="#思路2-map" class="headerlink" title="思路2:map"></a>思路2:map</h2><p>map中的key和value是对应的,如果我们在一个协程需要传递独有的变量,就可以设其为key,那么value就是channel了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var m=make(map[interface&#123;&#125;]chan bool)</span><br><span class="line"></span><br><span class="line">func sample(a interface&#123;&#125;)&#123;</span><br><span class="line">    &lt;-m[a]</span><br><span class="line">    beego.Debug(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main()&#123;</span><br><span class="line">    a:=1</span><br><span class="line">    m[a]=make(chan bool) //初始化channel</span><br><span class="line">    go sample(a)</span><br><span class="line">    m[a]&lt;-true</span><br><span class="line"></span><br><span class="line">    b:=&quot;哈哈&quot;</span><br><span class="line">    m[a]=make(chan bool)</span><br><span class="line">    go sample(b)</span><br><span class="line">    m[b]&lt;-true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>安装<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ go get -v github.com/spf13/hugo</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>另外为了方便接下来的指令,将生成的二进制文件直接放入/usr/local/bin目录下,方便终端直接输入指令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mv hugo /usr/local/bin</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>新建网站</li>
+</ol>
 <ul>
-<li>优点:通过func内特有的变量作为key,免去了slice中查询index的步骤</li>
-<li>缺点,在使用之前必须进行初始化,即m[a]=make(chan bool),否则接受到的永远为nil</li>
+<li>建立网站所在的目录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hugo new site SITEPATH</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>slice和map作为全局变量都可以动态的加入channel,保证每个协程的独立通信.而如果go启动的函数本身需要特有的变量的话,无疑map可以更好完成声明特有channel的使用.</p>
+<p>进入目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd SITEPATH</span><br></pre></td></tr></table></figure></p>
+<p>之后会产生如下的目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">├── archetypes   //</span><br><span class="line">├── config.toml  //网站全局设置</span><br><span class="line">├── content      //编写的博客内容,主要为md文件</span><br><span class="line">├── data         //</span><br><span class="line">├── layouts      //布局</span><br><span class="line">├── static       //静态文件,包括图片js,css文件</span><br><span class="line">└── themes       //下载的主题</span><br></pre></td></tr></table></figure></p>
+<p>我们可以编写网页啦,先写一个helloworld再说<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hugo new helloworld.md</span><br></pre></td></tr></table></figure></p>
+<p>于是在content目录下就有了一个helloworld.md文件,并且预先写入了一些信息</p>
+<blockquote>
+<p>+++<br>date = “2017-02-20T17:06:32+08:00”   //生成md文件的日期<br>title = “helloworld”   //本片文章的题目<br>description=””      //文章简介<br>draft=true         //是否为草稿<br>//以上信息在生成网页时都是有所体现的<br>+++</p>
+</blockquote>
+<p>在以上信息的下面用markdown格式写入一些内容好了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#Noah is handsome!</span><br><span class="line">- so as lihaoyue</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>本地测试</li>
+</ol>
+<ul>
+<li><p>经过了刚才的那么多步骤最后当然要看看我们的网页长什么样子了,但是必须要加载个主题(皮肤)才能渲染出正常的页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd themes  //进入网站路径下themes目录</span><br><span class="line">$ git clone https://github.com/spf13/hyde.git //经典皮肤,也可以下载所有皮肤</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>go语言标准库自带web服务,可以实现监听端口,所以hugo自然也可以本地跑服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hugo server --theme=hyde --buildDrafts</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>参数解读</p>
+<ul>
+<li>–theme:<code>使用主题名称</code>   可以在config.toml中设置,指令就不需要带参数了  </li>
+<li>–buidDrafts:<code>渲染草稿</code> 不带此参数则无法渲染草稿,如果前面编写的md文件draft:false或者删除,则可以正常渲染不需要此参数<ul>
+<li>服务默认在1313端口,浏览器中输入<blockquote>
+<p>localhost:1313</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p>你可以看到自己的网站了~</p>
+<p>Reference:<br><a href="http://www.gohugo.org" target="_blank" rel="noopener">Hugo中文</a></p>
 </section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#go" >
-    <span class="tag-code">go</span>
+  <a href="/tags#hugo" >
+    <span class="tag-code">hugo</span>
   </a>
 
       </div>
@@ -167,7 +209,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#思路1-slice"><span class="toc-nav-text">思路1:slice</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#思路2-map"><span class="toc-nav-text">思路2:map</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#总结"><span class="toc-nav-text">总结</span></a></li></ol>
+      <ol class="nav">none</ol>
     
   </div>
 </aside>
@@ -194,7 +236,7 @@
     })();
 
   (function () {
-    var url = 'http://likemoon.me/2017/03/27/与多协程的沟通-map搭配channel在协程中的使用/';
+    var url = 'http://likemoon.me/2017/02/21/Hugo建站/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -250,7 +292,7 @@
     var gitmentConfig = "";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "与多协程的沟通:map搭配channel在协程中的使用",
+        id: "Hugo建站",
         owner: "",
         repo: "",
         oauth: {
