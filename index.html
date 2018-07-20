@@ -138,15 +138,14 @@
   
     <article class="article-card">
       <h2 class="article-head">
-        <a href="/2018/07/13/bug记录/">bug记录</a>
+        <a href="/2018/07/13/bug记录/">linux环境变量设置</a>
       </h2>
       <p class="article-date">July 13, 2018&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/2018/07/13/bug记录/#disqus_thread"></a></p>
 
       
       <div class="article-summary">
         
-          配置环境变量时，可以根据所使用的终端进行配置，而生效范围也仅限使用该终端当修改配置文件之后应该用source命令使修改即刻生效当对bash的配置.bashrc文件进行修改配置时，不应通过zsh使用source命令，而应该切换到bash再使用source命令
-
+          环境变量设置linux的环境变量也可以分为不同层级，对应在不同的目录。下面从覆盖范围从大到小(级别由低到高)排列：所有用户生效:/etc/profile单一用户生效:~/.bash_profile或~/.bashrc单个终端临时生效:使用命令export PATH=$PATH;$JAVA_H ...
         
       </div>
       <a class="more" href="/2018/07/13/bug记录/">Read more</a>

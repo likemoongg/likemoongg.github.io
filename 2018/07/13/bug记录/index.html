@@ -10,7 +10,7 @@
   
   <title>
     
-      bug记录 | LikeMoon&#39;s blog
+      linux环境变量设置 | LikeMoon&#39;s blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -112,7 +112,7 @@
 </header>
 
     <div id="article-banner">
-  <h2>bug记录</h2>
+  <h2>linux环境变量设置</h2>
   <p class="post-date">2018-07-13</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
@@ -121,7 +121,15 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>配置环境变量时，可以根据所使用的终端进行配置，而生效范围也仅限使用该终端<br>当修改配置文件之后应该用source命令使修改即刻生效<br>当对bash的配置.bashrc文件进行修改配置时，不应通过zsh使用source命令，而应该切换到bash再使用source命令</p>
+    <section class="markdown-content"><h3 id="环境变量设置"><a href="#环境变量设置" class="headerlink" title="环境变量设置"></a>环境变量设置</h3><p>linux的环境变量也可以分为不同层级，对应在不同的目录。下面从覆盖范围从大到小(级别由低到高)排列：<br>所有用户生效:<code>/etc/profile</code><br>单一用户生效:<code>~/.bash_profile</code>或<code>~/.bashrc</code><br>单个终端临时生效:使用命令<code>export PATH=$PATH;$JAVA_HOME/bin</code></p>
+<p>例如：编辑<code>/etc/profile</code>，添加如下代码，加入JDK中的可执行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> <span class="built_in">export</span> PATH=<span class="variable">$PATH</span>;<span class="variable">$JAVA_HOME</span>/bin</span><br></pre></td></tr></table></figure></p>
+<p>当修改配置文件之后应该用source命令使修改即刻生效</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p><a href="http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html" target="_blank" rel="noopener">.bash_profile vs .bashrc</a></p>
+<p>如果使用其他shell如<code>zsh</code>,则单一用户生效的配置文件位于<code>~/.zshrc</code></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a href="http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html" target="_blank" rel="noopener">.bash_profile vs .bashrc</a></li>
+<li><a href="https://www.jianshu.com/p/ac2bc0ad3d74" target="_blank" rel="noopener">Linux环境变量总结</a></li>
+</ul>
 </section>
     <!-- Tags START -->
     
@@ -148,7 +156,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="nav">none</ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#环境变量设置"><span class="toc-nav-text">环境变量设置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#注意事项"><span class="toc-nav-text">注意事项</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Reference"><span class="toc-nav-text">Reference</span></a></li></ol>
     
   </div>
 </aside>
@@ -231,7 +239,7 @@
     var gitmentConfig = "";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "bug记录",
+        id: "linux环境变量设置",
         owner: "",
         repo: "",
         oauth: {
